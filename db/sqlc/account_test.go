@@ -4,14 +4,15 @@ import (
 	"context"
 	"testing"
 
+	"github.com/hnsia/sbank/util"
 	"github.com/stretchr/testify/require"
 )
 
 func TestCreateAccount(t *testing.T) {
 	args := CreateAccountParams{
-		Owner:    "john",
-		Balance:  200,
-		Currency: "MYR",
+		Owner:    util.RandomOwner(),
+		Balance:  float64(util.RandomMoney()),
+		Currency: util.RandomCurrency(),
 	}
 
 	account, err := testQueries.CreateAccount(context.Background(), args)
